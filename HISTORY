@@ -1,0 +1,12 @@
+VDR Plugin 'vdirs' Revision History
+-----------------------------------
+
+2018-01-06: Version 0.0.1
+- Initial revision.
+
+2024-09-01: Version 1.0.0
+- changed stat() to lstat() in IsFile() and IsSymlink() to
+  fix symlink detection.
+- added header to point to COPYRIGHT and README
+- added README
+- bump version

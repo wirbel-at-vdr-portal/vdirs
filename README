@@ -1,0 +1,76 @@
+This is a "plugin" for the Video Disk Recorder (VDR).
+Copyright (C) 2018-2024  Winfried Koehler
+
+Written by:                  Winfried Koehler <nvdec A.T. quantentunnel D.O.T. de >
+
+Project's homepage:          https://github.com/wirbel-at-vdr-portal/vdirs
+
+Latest version available at: https://github.com/wirbel-at-vdr-portal/vdirs
+
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+See the file COPYING for more information.
+
+
+
+
+Description: This plugin manages multiple disks inside vdr.
+
+
+At the root file system a folder /video should exist, where all supplementary
+files are located. Usually, a few GB should be enough, even for large video
+collections.
+
+The video files are located on other file systems, mounted on
+/mnt/video0 ..
+/mnt/videoN
+
+The plugin creates symlinks from /video/<NAME_OF_RECORDING>/<DATE>/*.ts to
+files the actual files on /mnt/videoX/.. in a flat directory structure
+(no sub dirs). So, the large video files are now on a different volume.
+
+Example:
+
+ls -l /video/Zuhause_ist_der_Zauber_los/2013-01-04.20.12.3-0.rec/
+
+00001.ts -> /mnt/video1/Zuhause_ist_der_Zauber_los~2013-01-04_20_12_3-0~00001.ts
+index
+resume
+
+
+
+
+
+
+For using this plugin, all existing video files need to be imported into this
+scheme. For this a shell script exists, see folder scripts.
+IMPORTANT: Before importing, the disk sequence, see below, needs to be set.
+
+
+The plugin also takes care of disk space on the mounted disks, you can adjust
+the default storage space by setting vdirs.DiskSeq in vdrs setup.conf.
+
+vdirs.DiskSeq = 0i
+
+For each disk, there is a character, so '0i' is a setup for two disks. Every
+recording with it's name beginning with '0' to 'j' goes to the first disk, every
+recording with 'i' and up to 'z' goes to the second disk.
+     disk0 '0'..'h'
+     disk1 'i'..'z'
+
+This is the order of letters used: 0123456789abcdefghijklmnopqrstuvwxyz
+
+A setup with three disks could be for example '0do':
+     disk0 '0'..'c'
+     disk1 'd'..'n'
+     disk2 'o'..'z'
+
+Disk balancing is implemented, but not yet well tested - my disk are too large..
+
+
+have phun,
+--wirbel
+
