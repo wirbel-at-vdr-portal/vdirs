@@ -56,7 +56,7 @@ the default storage space by setting vdirs.DiskSeq in vdrs setup.conf.
 vdirs.DiskSeq = 0i
 
 For each disk, there is a character, so '0i' is a setup for two disks. Every
-recording with it's name beginning with '0' to 'j' goes to the first disk, every
+recording with it's name beginning with '0' to 'h' goes to the first disk, every
 recording with 'i' and up to 'z' goes to the second disk.
      disk0 '0'..'h'
      disk1 'i'..'z'
