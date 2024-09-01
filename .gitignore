@@ -16,3 +16,4 @@
 Edit*
 *.txt
 *.log
+.dependencies
