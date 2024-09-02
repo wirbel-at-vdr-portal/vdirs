@@ -488,9 +488,11 @@ bool MultiVideoDir::Remove(std::string Name) {
         Remove(Name + '/' + s);
      return ::Remove(Name);
      }
-
-  std::cerr << __PRETTY_FUNCTION__ << "cannot remove " << Name << std::endl;
-  return false;
+  else {
+     if (debug)
+        std::cout << __PRETTY_FUNCTION__ << "not found: " << Name << std::endl;
+     }
+  return true;
 }
 
 
