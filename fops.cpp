@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-#include <cstring>
+#include <cstring>     /* memset() */
 #include <cstdio>      /* remove() */
 #include <sys/types.h> /* stat() */
 #include <sys/stat.h>  /* stat() */
@@ -66,7 +66,13 @@ bool IsVideoFile(std::string Name) {
 
 std::string LinkDest(std::string Name) {
   static char linkdest[1024];
-  if (readlink(Name.c_str(), linkdest, 1024) < 0) *linkdest = 0;
+  /* readlink() does not append a terminating null byte to buf.
+   * It will (silently) truncate the contents (to a length of
+   * bufsiz characters), in case the buffer is too small to
+   * hold all of the contents.
+   */
+  memset(linkdest, 0, sizeof(linkdest));
+  if (readlink(Name.c_str(), linkdest, 1024 - 1) < 0) *linkdest = 0;
   return linkdest;
 }
 
