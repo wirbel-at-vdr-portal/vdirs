@@ -183,7 +183,7 @@ char Equalizer::CharMapping(std::string s) {
 
   if (*p == '/') { if (s.size() < 2) return '0'; p++; }
   if (*p == '%') { if (s.size() < 2) return '0'; p++; }
-  
+
   switch((unsigned char)*p) {
      case 0x00: return '0';
      case 0xC2: return CharMapping(p+2);
@@ -222,7 +222,7 @@ char Equalizer::CharMapping(std::string s) {
      case '0' ... '9': return *p;
      case 'a' ... 'z': return *p;
      case 'A' ... 'Z': return *p + 32;
-     default: return CharMapping(++p);     
+     default: return CharMapping(++p);
      }
   return '0'; /* never reached. */
 }
@@ -234,7 +234,7 @@ void Equalizer::Add(std::string Path) {
      DiskUsePerChar[MappedChar] += FileSize(f);
      }
 }
-  
+
 void Equalizer::Equalize(bool forced) {
   bool RunningShort = forced;
   double Goal = 0;
@@ -297,8 +297,6 @@ void Equalizer::Equalize(bool forced) {
      }
 }
 
-
-                              
 
 
 

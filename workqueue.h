@@ -42,7 +42,7 @@ void ImportWork(ImportData& d) {
      if (IsFile(from)) {
         if (IsVideoFile(from)) {
            std::string linkdest = Disk + '/' + FlatPath(Dir + '/' + e);
-           std::cerr << "SymLink(" << to << " -> " << linkdest << ")" << std::endl;           
+           std::cerr << "SymLink(" << to << " -> " << linkdest << ")" << std::endl;
            SymLink(to, linkdest, DryRun);
            std::cerr << "MoveFile(" << from << ", " << linkdest << ")" << std::endl;
            if (!DryRun)
@@ -115,7 +115,7 @@ public:
       }
     for(auto&& t:Threads) t.join();
     }
-  void /*operator()*/Push(T&& value) {
+  void Push(T&& value) {
     std::unique_lock<std::mutex> UniqueLock(*this);
     while(Q::size() == capacity) wait(UniqueLock);
     Q::push(std::forward<T>(value));
