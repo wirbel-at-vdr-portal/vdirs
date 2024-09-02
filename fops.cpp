@@ -54,7 +54,7 @@ bool IsVideoFile(std::string Name) {
   if (EndsWith(Name, ".ts"))
      return true;
   else if (EndsWith(Name, ".vdr")) {
-     if      (EndsWith(Name, "index.vdr"))   return false; 
+     if      (EndsWith(Name, "index.vdr"))   return false;
      else if (EndsWith(Name, "info.vdr"))    return false;
      else if (EndsWith(Name, "resume.vdr"))  return false;
      else if (EndsWith(Name, "marks.vdr"))   return false;
