@@ -4,7 +4,7 @@
  */
 #include "vdirs.h"
 
-static const char *VERSION        = "1.0.0";
+static const char *VERSION        = "1.0.1";
 static const char *DESCRIPTION    = "multiple video directories";
 
 VDRPLUGINCREATOR(cPluginVdirs); // Don't touch this!

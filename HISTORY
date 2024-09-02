@@ -10,3 +10,10 @@ VDR Plugin 'vdirs' Revision History
 - added header to point to COPYRIGHT and README
 - added README
 - bump version
+
+2024-09-01: Version 1.0.1
+- LinkDest(), add missing memset
+- bool MultiVideoDir::Remove(std::string Name), deleting non-existent
+  Files/Dirs shouldnt trigger any error
+- cosmetics
+- bump version
