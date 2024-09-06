@@ -13,13 +13,9 @@
 #include <sys/stat.h>  /* stat() */
 #include <unistd.h>    /* stat() */
 #include <dirent.h>    /* opendir() */
+#include <repfunc.h>
 #include "fops.h"
 
-std::vector<std::string> split(const std::string& s, char d) {
-   std::vector<std::string> e;
-   delim_split(s, d, std::back_inserter(e));
-   return e;
-}
 
 bool IsDirectory(std::string Name) {
   struct stat st;
@@ -162,7 +158,7 @@ bool MakeDirectory(std::string Name, bool Parents, bool DryRun) {
 
   std::string fullpath;
 
-  for(auto dir:split(Name.substr(1), '/')) {
+  for(auto dir:SplitStr(Name.substr(1), '/')) {
      fullpath += '/' + dir;
      if (!MakeDirectory(fullpath, false, DryRun))
         return false;

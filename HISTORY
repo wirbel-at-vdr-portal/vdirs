@@ -17,3 +17,7 @@ VDR Plugin 'vdirs' Revision History
   Files/Dirs shouldnt trigger any error
 - cosmetics
 - bump version
+
+2024-xx-xx: Version 1.0.2
+- fops.{cpp,h}: replace split() by librepfunc::StrSplit()
+

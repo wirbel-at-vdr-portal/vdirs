@@ -44,6 +44,10 @@ PACKAGE = vdr-$(ARCHIVE)
 
 SOFILE = libvdr-$(PLUGIN).so
 
+### Libraries
+
+LIBS = -lrepfunc
+
 ### Includes and Defines (add further entries here):
 
 INCLUDES +=
@@ -106,7 +110,7 @@ install-i18n: $(I18Nmsgs)
 
 $(SOFILE): $(OBJS)
 	@echo LD $@
-	$(Q)$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $(OBJS) -o $@
+	$(Q)$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $(OBJS) $(LIBS) -o $@
 
 install-lib: $(SOFILE)
 	install -D $^ $(DESTDIR)$(LIBDIR)/$^.$(APIVERSION)

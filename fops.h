@@ -27,10 +27,3 @@ bool Remove(std::string Filename, bool DryRun = false);
 size_t FileSize(std::string Name);
 bool MakeDirectory(std::string Name, bool Parents = true, bool DryRun = false);
 bool Rename(std::string From, std::string To);
-
-template<typename T> void delim_split(const std::string& s, char d, T r) {
-   std::stringstream ss(s);
-   std::string i;
-   while(std::getline(ss, i, d)) *(r++) = i;
-}
-std::vector<std::string> split(const std::string& s, char d);
