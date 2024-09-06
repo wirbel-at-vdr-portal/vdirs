@@ -175,10 +175,6 @@ bool SymLink(std::string LinkName, std::string LinkDest, bool DryRun) {
      return symlink(LinkDest.c_str(), LinkName.c_str()) == 0;
 }
 
-bool FileExists(std::string Name) {
-  return IsFile(Name);
-}
-
 bool DirectoryExists(std::string Name) {
   return IsDirectory(Name);
 }

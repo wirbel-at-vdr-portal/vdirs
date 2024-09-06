@@ -15,6 +15,7 @@
 #include <sys/stat.h>  /* stat() */
 #include <unistd.h>    /* stat() */
 #include <sys/statvfs.h>
+#include <repfunc.h>
 #include "multidir.h"
 #include "vdirs.h"
 #include "fops.h"
