@@ -21,3 +21,5 @@ VDR Plugin 'vdirs' Revision History
 2024-xx-xx: Version 1.0.2
 - fops.{cpp,h}: replace split() by librepfunc::StrSplit()
 - {fops,multidir}.{cpp,h}: replace FileExists() by librepfunc::FileExists()
+- fops.{cpp,h}: replace DirectoryExists() by librepfunc::DirectoryExists()
+

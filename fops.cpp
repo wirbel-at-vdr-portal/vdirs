@@ -175,10 +175,6 @@ bool SymLink(std::string LinkName, std::string LinkDest, bool DryRun) {
      return symlink(LinkDest.c_str(), LinkName.c_str()) == 0;
 }
 
-bool DirectoryExists(std::string Name) {
-  return IsDirectory(Name);
-}
-
 void CopyFile(std::string From, std::string To, bool DryRun) {
   if (DryRun)
      std::cerr << __FUNCTION__ << "(" << From << "," << To << ")" << std::endl;

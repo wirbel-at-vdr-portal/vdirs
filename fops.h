@@ -11,7 +11,6 @@ bool IsDirectory(std::string Name);
 bool IsSymlink(std::string Name);
 bool IsFile(std::string Name);
 bool IsVideoFile(std::string Name);
-bool DirectoryExists(std::string Name);
 bool EndsWith(std::string Name, std::string s);
 
 bool SymLink(std::string LinkName, std::string LinkDest, bool DryRun = false);
