@@ -17,8 +17,6 @@ bool SymLink(std::string LinkName, std::string LinkDest, bool DryRun = false);
 std::string LinkDest(std::string Name);
 std::string FlatPath(std::string Path);
 
-std::vector<std::string> DirEntries(std::string Name);
-
 void CopyFile(std::string From, std::string To, bool DryRun = false);
 void MoveFile(std::string From, std::string To, bool DryRun = false);
 bool Remove(std::string Filename, bool DryRun = false);

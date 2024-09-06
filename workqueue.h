@@ -36,7 +36,7 @@ void ImportWork(ImportData& d) {
   if (!DirectoryExists(Dest))
      MakeDirectory(Dest, true, DryRun);
 
-  for(auto e:DirEntries(Src)) {
+  for(auto e:cFileList(Src).List()) {
      std::string from(Src + '/' + e);
      std::string to(Dest  + '/' + e);
      if (IsFile(from)) {

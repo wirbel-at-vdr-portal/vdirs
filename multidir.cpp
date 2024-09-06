@@ -230,7 +230,7 @@ char Equalizer::CharMapping(std::string s) {
 
 void Equalizer::Add(std::string Path) {
   uint8_t MappedChar;
-  for(auto f:DirEntries(Path)) {
+  for(auto f:cFileList(Path).List()) {
      MappedChar = (uint8_t) CharMapping(f);
      DiskUsePerChar[MappedChar] += FileSize(f);
      }
@@ -365,7 +365,7 @@ const char* MultiVideoDir::SVDRPCommand(std::string Command, std::string Option,
   else if (Command == "IMPORT_NEXT") {
      if (Option.size() == 0) return "missing arg";
      *b = 0;
-     for(auto e:DirEntries(Option)) {
+     for(auto e:cFileList(Option).List()) {
         std::string n(Option + "/" + e);
         if (IsDirectory(n)) {
            strcpy(b, n.c_str());
@@ -448,7 +448,7 @@ bool MultiVideoDir::Move(std::string From, std::string To) {
   std::string subdir = To.substr(videodir.size() + 1);
   std::string nextdisk(eq->Storage(eq->CharMapping(subdir)));
 
-  for(auto e:DirEntries(To)) {
+  for(auto e:cFileList(To).List()) {
      auto linkname = To + '/' + e;
      if (IsSymlink(linkname) and IsVideoFile(linkname)) {
         std::string linkdest = LinkDest(linkname);
@@ -489,7 +489,7 @@ bool MultiVideoDir::Remove(std::string Name) {
      }
   else if (IsDirectory(Name)) {
      if (debug) std::cout << "IsDirectory = true" << std::endl;
-     for(auto s:DirEntries(Name))
+     for(auto s:cFileList(Name).List())
         Remove(Name + '/' + s);
      return ::Remove(Name);
      }
@@ -556,7 +556,7 @@ void MultiVideoDir::Balance() {
 }
 
 void MultiVideoDir::Import(std::string Path, bool One, bool DryRun) {
-  for(auto e:DirEntries(Path))
+  for(auto e:cFileList(Path).List())
      if (IsDirectory(Path + '/' + e)) {
         char c = eq->CharMapping(e);
         if (DryRun) {

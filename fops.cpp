@@ -116,25 +116,6 @@ std::string FlatPath(std::string Path) {
   return s;
 }
 
-// ok. 20180126
-std::vector<std::string> DirEntries(std::string Name) {
-  std::vector<std::string> v;
-  DIR* dir = opendir(Name.c_str());
-
-  if (! dir)
-     std::cerr << __PRETTY_FUNCTION__ << "cannot open " << Name << std::endl;
-  else {
-     for(struct dirent* dp = readdir(dir); dp; dp = readdir(dir)) {
-        if (!strcmp(dp->d_name, ".") or
-            !strcmp(dp->d_name, ".."))
-          continue;
-        v.push_back(dp->d_name);
-        }
-     closedir(dir);
-     }
-  return v;  
-}
-
 size_t FileSize(std::string Name) {
   struct stat st;
   if (stat(Name.c_str(), &st))
