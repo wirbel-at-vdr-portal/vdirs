@@ -23,4 +23,5 @@ VDR Plugin 'vdirs' Revision History
 - {fops,multidir}.{cpp,h}: replace FileExists() by librepfunc::FileExists()
 - fops.{cpp,h}: replace DirectoryExists() by librepfunc::DirectoryExists()
 - silence compiler by default
+- multidir.cpp: add more debug to MultiVideoDir::Move()
 

@@ -441,6 +441,8 @@ bool MultiVideoDir::Rename(std::string From, std::string To) {
  *    From:  full dir path incl. '*.rec'
  *    To:    full dir path incl. '*.rec' */
 bool MultiVideoDir::Move(std::string From, std::string To) {
+  if (debug) std::cout << "Move(" << From << "," << To << ")" << std::endl;
+
   ::Rename(From, To);
 
   std::string subdir = To.substr(videodir.size() + 1);
@@ -453,10 +455,14 @@ bool MultiVideoDir::Move(std::string From, std::string To) {
         std::string current_disk = linkdest.substr(0, linkdest.rfind('/'));
         std::string newdest(nextdisk + '/' + FlatPath(subdir));
 
-        if (current_disk == nextdisk)
+        if (current_disk == nextdisk) {
+           if (debug) std::cout << "rename " << linkdest << " to " << newdest << std::endl;
            ::Rename(linkdest, newdest);
-        else
+           }
+        else {
+           if (debug) std::cout << "bg move " << linkdest << " to " << newdest << std::endl;
            eq->BgMove(linkdest, newdest);
+           }
         ::Remove(linkname);
         SymLink(linkname, newdest);
         }
